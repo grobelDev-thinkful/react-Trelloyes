@@ -4,6 +4,11 @@ import "./List.css";
 import Card from "./Card";
 
 class ListClass extends React.Component {
+  // constructor(props) {
+  //   // console.log("props in constructor", props);
+  //   super(props);
+  // }
+
   render() {
     return (
       <section className="List">
@@ -12,9 +17,22 @@ class ListClass extends React.Component {
         </header>
         <div className="List-cards">
           {this.props.cards.map(card => (
-            <Card key={card.id} title={card.title} content={card.content} />
+            <Card
+              key={card.id}
+              id={card.id}
+              title={card.title}
+              content={card.content}
+              onClickDelete={this.props.onClickDelete}
+            />
           ))}
-          <button type="button" className="List-add-button">
+          {/* <button type="button" className="List-add-button">
+            + Add Random Card
+          </button> */}
+          <button
+            type="button"
+            className="List-add-button"
+            onClick={() => this.props.onClickAdd(this.props.id)}
+          >
             + Add Random Card
           </button>
         </div>
